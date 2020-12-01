@@ -1,4 +1,4 @@
-# Message Service
+# Books Service
 
 A simple books REST API service that contain simple CRUD operation.
 
