@@ -1,6 +1,12 @@
 # Message Service
 
-A simple message REST API service that contain simple CRUD operation.
+A simple books REST API service that contain simple CRUD operation.
+
+It can query for books data.
+
+TODO:
+ - Add persistance DB
+ - Add update, delete endpoints
 
 ## System Requirements
 
