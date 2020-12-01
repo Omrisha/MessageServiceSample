@@ -5,7 +5,7 @@ ENV TESTING=$TESTING
 
 WORKDIR /usr/local/src/
 
-COPY composer.lock /usr/local/src/
+COPY composer.json /usr/local/src/
 
 RUN composer update --ignore-platform-reqs --optimize-autoloader \
     --no-plugins --no-scripts --prefer-dist \

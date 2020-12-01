@@ -26,8 +26,8 @@ TODO:
 
  - GET      /api/v1/books - get all books
  - GET      /api/v1/books/:id - get book by id (FUTURE)
- - POST     /api/v1/books - create new book (FUTURE)
- - PUT      /api/v1/books - update new book (FUTURE)
+ - POST     /api/v1/books - create new book 
+ - PUT      /api/v1/books - update new book 
  - DELETE   /api/v1/bools/:id - delete book by id (FUTURE)
 
 ## JSON example
