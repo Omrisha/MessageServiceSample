@@ -6,6 +6,7 @@ if (file_exists(__DIR__.'/../vendor/autoload.php')) {
 
 use Utopia\App;
 use Utopia\Swoole\Request;
+use Utopia\Swoole\Response;
 use Utopia\Swoole\Files;
 use Swoole\Http\Server;
 use Swoole\Http\Request as SwooleRequest;
