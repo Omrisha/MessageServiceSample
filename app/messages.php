@@ -2,6 +2,7 @@
 
 use Utopia\App;
 use Utopia\Exception;
+use Utopia\CLI\Console;
 
 class MessageEntity {
     public $id;
@@ -16,8 +17,9 @@ App::get('/messages')
      // Define Route
     ->action(
         function() use ($request, $response) {
+            Console::log("Hi From GET");
             $response
-              ->json([]);
+              ->json($fakeData);
         }, ['response']);
 
 App::post('/messages')
@@ -27,6 +29,7 @@ App::post('/messages')
     ->param('id', '', 'Id of the message')
     ->action(
         function() use($message, $id, $response) {
+            Console::log("Hi From POST");
             $entity = new MessageEntity();
             $entity->$id = $id;
             $entity->$message = $message;
@@ -49,6 +52,7 @@ App::delete('/messages/:id')
     ->param('id', '', 'Id of the message')
     ->action(
         function() use($id, $response) {
+            Console::log("Hi From DELETE");
             $length = count($fakeData);
             for ($i = 0; $i < $length; $i++) {
                 if ($fakeData[$i]->$id == $id) {
@@ -69,7 +73,7 @@ App::put('/messages/:id')
     ->param('id', '', 'Id of the message')
     ->action(
         function() use($message, $id, $response) {
-
+            Console::log("Hi From PUT");
             for ($i = 0; $i < $length; $i++) {
                 if ($fakeData[$i]->$id == $id) {
                     $fakeData[$i]->$message = $message;

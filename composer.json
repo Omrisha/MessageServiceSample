@@ -11,6 +11,7 @@
     ],
     "require": {
         "utopia-php/framework": "^0.9.8",
-        "utopia-php/swoole": "^0.2.0"
+        "utopia-php/swoole": "^0.2.0",
+        "utopia-php/cli": "^0.7.3"
     }
 }
