@@ -13,5 +13,5 @@ A simple message REST API service that contain simple CRUD operation.
 
 * `git clone `
 * `docker build -t message-service-appwrite .`
-* `docker run -dp 8081:8081 message-service-appwrite`
-* Go to http://localhost:8081/messages with your client (Google Chrome, Postman, etc...)
+* `docker run -dp 80:80 message-service-appwrite`
+* Go to http://localhost:80/messages with your client (Google Chrome, Postman, etc...)

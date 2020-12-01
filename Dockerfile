@@ -134,6 +134,7 @@ COPY --from=step1 /usr/local/lib/php/extensions/no-debug-non-zts-20190902/maxmin
 
 # Add Source Code
 COPY ./app /usr/src/code/app
+COPY ./public /usr/src/code/public
 
 # Set Volumes
 RUN mkdir -p /storage/uploads && \
@@ -157,6 +158,6 @@ RUN echo extension=swoole.so >> /usr/local/etc/php/conf.d/swoole.ini
 RUN echo extension=redis.so >> /usr/local/etc/php/conf.d/redis.ini
 RUN echo extension=maxminddb.so >> /usr/local/etc/php/conf.d/maxminddb.ini
 
-EXPOSE 8081
+EXPOSE 80
 
 CMD [ "php", "./app/http.php" ]
