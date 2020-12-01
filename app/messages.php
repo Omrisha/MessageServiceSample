@@ -2,88 +2,49 @@
 
 use Utopia\App;
 use Utopia\Exception;
+use Utopia\Swoole\Request;
 use Utopia\CLI\Console;
-
-class MessageEntity {
-    public $id;
-    public $message;
-}
-
-$fakeData = array();
+use Utopia\Validator\Text;
+use Utopia\Validator\Range;
 
 App::get('/messages')
-    ->desc('Get All messages')
+    ->desc('Get messages')
     ->groups(['api', 'messages'])
-     // Define Route
-    ->action(
-        function() use ($request, $response) {
-            Console::log("Hi From GET");
-            $response
-              ->json($fakeData);
-        }, ['response']);
+    ->action(function ($response) {
+        $response->json([
+            'message' => "Hello World!",
+            'id' => 1
+            ]);
+    }, ['response']);
 
 App::post('/messages')
-    ->desc('Add new message')
+    ->desc('POST message')
     ->groups(['api', 'messages'])
-    ->param('message', '', 'Message from user')
-    ->param('id', '', 'Id of the message')
-    ->action(
-        function() use($message, $id, $response) {
-            Console::log("Hi From POST");
-            $entity = new MessageEntity();
-            $entity->$id = $id;
-            $entity->$message = $message;
+    ->action(function ($response) {
+        $response
+            ->json([
+                'message' => 'HELLO',
+                'id' => 50
+                ]);
+    }, ['response']);
 
-            for ($i = 0; $i < $length; $i++) {
-                if ($fakeData[$i]->$id == $id) {
-                    throw new Exception('Message is already exist with this Id.', 409);
-                }
-            }
-
-            array_push($fakeData, $entity);
-            $response
-                ->setStatusCode(Response::STATUS_CODE_CREATED)
-                ->json($entity);
-        }, ['response']);
-
-App::delete('/messages/:id')
-    ->desc('Delete message by Id')
-    ->groups(['api', 'messages'])
-    ->param('id', '', 'Id of the message')
-    ->action(
-        function() use($id, $response) {
-            Console::log("Hi From DELETE");
-            $length = count($fakeData);
-            for ($i = 0; $i < $length; $i++) {
-                if ($fakeData[$i]->$id == $id) {
-                    unset($fakeData[$i]);
-                }
-            }
-
-            array_values($fakeData);
+App::delete('/messages')
+    ->param('id', '', new Range(0, 100), 'Id of the message', true)
+    ->action(function($id, $response) {
 
             $response
                 ->setStatusCode(Response::STATUS_CODE_OK);
-        }, ['response']);
+        }, ['id', 'response']);
 
-App::put('/messages/:id')
-    ->desc('Edit message by Id')
-    ->groups(['api', 'messages'])
-    ->param('message', '', 'Message from user')
-    ->param('id', '', 'Id of the message')
-    ->action(
-        function() use($message, $id, $response) {
+App::put('/messages')
+    ->param('id', '', new Range(0, 100), 'Id of the message', true)
+    ->action(function($id, $response) {
             Console::log("Hi From PUT");
-            for ($i = 0; $i < $length; $i++) {
-                if ($fakeData[$i]->$id == $id) {
-                    $fakeData[$i]->$message = $message;
-                }
-            }
 
             $response
                 ->setStatusCode(Response::STATUS_CODE_OK)
                 ->json([
-                    'message' => $message,
+                    'message' => 'EDITED',
                     'id' => $id
                 ]);
-        }, ['response']);
+        }, ['id', 'response']);
