@@ -1,0 +1,16 @@
+{
+    "name": "shapiraomri/message-service-appwrite",
+    "description": "Simple message service with Swoole and Utopia",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Omri Shapira",
+            "email": "omri.shapira@gmail.com",
+            "homepage": "https://github.com/Omrisha"
+        }
+    ],
+    "require": {
+        "utopia-php/framework": "^0.9.8",
+        "utopia-php/swoole": "^0.2.0"
+    }
+}
