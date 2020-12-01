@@ -134,7 +134,6 @@ COPY --from=step1 /usr/local/lib/php/extensions/no-debug-non-zts-20190902/maxmin
 
 # Add Source Code
 COPY ./app /usr/src/code/app
-COPY ./public /usr/src/code/public
 
 # Set Volumes
 RUN mkdir -p /storage/uploads && \

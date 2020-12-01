@@ -14,26 +14,11 @@ use Swoole\Http\Response as SwooleResponse;
 
 $http = new Server("0.0.0.0", 80);
 
-Files::load(__DIR__ . '/../public'); // Static files location
-
 require __DIR__ . '/messages.php';
 
 $http->on('request', function (SwooleRequest $swooleRequest, SwooleResponse $swooleResponse) {
     $request = new Request($swooleRequest);
     $response = new Response($swooleResponse);
-
-    if(Files::isFileLoaded($request->getURI())) { // output static files with cache headers
-        $time = (60 * 60 * 24 * 365 * 2); // 45 days cache
-
-        $response
-            ->setContentType(Files::getFileMimeType($request->getURI()))
-            ->addHeader('Cache-Control', 'public, max-age='.$time)
-            ->addHeader('Expires', \date('D, d M Y H:i:s', \time() + $time).' GMT') // 45 days cache
-            ->send(Files::getFileContents($request->getURI()))
-        ;
-
-        return;
-    }
 
     $app = new App('America/New_York');
     
