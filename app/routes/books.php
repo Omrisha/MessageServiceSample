@@ -78,3 +78,14 @@ App::put(API_BASE_PATH . '/books')
         $book["title"] = "Unlocking Android Ver. 5";
         $response->json($book);
     }, ['request', 'response']);
+
+App::delete(API_BASE_PATH . '/books')
+    ->desc('Create a new book')
+    ->groups(['api', 'books'])
+    ->action(function ($request, $response) {
+        $books = get_books();
+        $id = $request->getParam('isbn');
+
+        unset($books[$id]);
+        $response->noContent();
+    }, ['request', 'response']);

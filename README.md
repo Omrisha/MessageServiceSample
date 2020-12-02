@@ -28,8 +28,7 @@ TODO:
  - GET      /api/v1/books?isbn={isbn_number} - get book by id 
  - POST     /api/v1/books - create new book 
  - PUT      /api/v1/books?isbn={isbn_number} - update new book 
- - DELETE   /api/v1/bools/:id - delete book by id (FUTURE)
-
+ - DELETE   /api/v1/bools?isbn={isbn_number} - delete book by id
 ## JSON example
 
     {
