@@ -28,6 +28,7 @@ $http->on('request', function (SwooleRequest $swooleRequest, SwooleResponse $swo
     $request = new Request($swooleRequest);
     $response = new Response($swooleResponse);
 
+    var_dump($request);
     $app = new App(API_SERVER_TZ);
     
     try {
