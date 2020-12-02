@@ -6,7 +6,6 @@ It can query for books data.
 
 TODO:
  - Add persistance DB
- - Add update, delete endpoints
 
 ## System Requirements
 
